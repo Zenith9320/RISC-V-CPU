@@ -127,7 +127,7 @@ class SInstruction(InstructionType):
             imm = concat(msb, imm)
         return imm
 
-class UIntruction(InstructionType):
+class UInstruction(InstructionType):
 
     PREFIX = 'u'
 
@@ -231,7 +231,7 @@ supported_opcodes = [
   # mn,     opcode,      operator
   ('jal'   , (0b1101111, RV32I_ALU.ALU_ADD , (RV32I_ALU.ALU_TRUE, False)), JInstruction),
 
-  ('lui'   , (0b0110111, RV32I_ALU.ALU_ADD), UIntruction),
+  ('lui'   , (0b0110111, RV32I_ALU.ALU_ADD), UInstruction),
 
   ('add'   , (0b0110011, 0b000, 0b0000000, RV32I_ALU.ALU_ADD), RInstruction),
   ('sub'   , (0b0110011, 0b000, 0b0100000, RV32I_ALU.ALU_SUB), RInstruction),
@@ -257,7 +257,7 @@ supported_opcodes = [
   ('bltu' , (0b1100011, 0b110, RV32I_ALU.ALU_CMP_LTU, False), BInstruction),
 
   ('csrrs'   , (0b1110011, 0b010, RV32I_ALU.ALU_OR, None ,None ,None), IInstruction),
-  ('auipc' , (0b0010111, RV32I_ALU.ALU_ADD), UIntruction),
+  ('auipc' , (0b0010111, RV32I_ALU.ALU_ADD), UInstruction),
   ('csrrw' , (0b1110011, 0b001, RV32I_ALU.ALU_ADD, None,None,None), IInstruction),
   ('csrrwi' , (0b1110011, 0b101, RV32I_ALU.ALU_ADD, None,None,None), IInstruction),
 
@@ -281,7 +281,7 @@ supported_opcodes = [
   ('xori' , (0b0010011, 0b100, RV32I_ALU.ALU_XOR, None,None,None), IInstruction),
 ]
 
-deocder_signals = Record(
+decoder_signals = Record(
   # prepare the operands
   rs1=Bits(5),
   rs1_valid=Bits(1),
@@ -317,4 +317,4 @@ deocder_signals = Record(
 )
 
 #TODO(@were): Add `SInstruction` to the supported types later.
-supported_types = [RInstruction, IInstruction, BInstruction, UIntruction, JInstruction, SInstruction]
+supported_types = [RInstruction, IInstruction, BInstruction, UInstruction, JInstruction, SInstruction]
